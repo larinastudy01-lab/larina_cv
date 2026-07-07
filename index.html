@@ -353,11 +353,257 @@ body.locked .pdf-card input:disabled{
   #edit-password{width:150px;}
 }
 
+
+/* --- mobile-first refinements: readable on phones --- */
+img, iframe, video{max-width:100%;}
+.main{width:100%;}
+section{width:100%;}
+
+.menu-toggle{
+  border-radius:999px;
+  width:44px;
+  height:44px;
+  padding:0;
+  align-items:center;
+  justify-content:center;
+  background:rgba(239,233,222,.94);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  box-shadow:0 8px 22px rgba(20,24,30,.12);
+}
+.sidebar-scrim{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:45;
+  background:rgba(20,24,30,.28);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+body.menu-open{overflow:hidden;}
+
+body{
+  padding-bottom:calc(76px + env(safe-area-inset-bottom, 0px));
+}
+
+@media(max-width:800px){
+  body{
+    padding-bottom:calc(144px + env(safe-area-inset-bottom, 0px));
+    -webkit-text-size-adjust:100%;
+  }
+  body.menu-open .sidebar-scrim{display:block;}
+  .sidebar{
+    width:min(82vw,320px);
+    max-width:320px;
+    padding:4.35rem 1.1rem 1.3rem;
+    overflow-y:auto;
+    box-shadow:18px 0 45px rgba(20,24,30,.16);
+  }
+  .brand{font-size:1.05rem;}
+  .navlist{gap:.18rem;}
+  .navlist a{
+    padding:.78rem .65rem;
+    font-size:.8rem;
+  }
+  .sidebar-actions button{
+    padding:.72rem .75rem;
+    line-height:1.35;
+  }
+  .main{overflow:hidden;}
+  section{
+    max-width:none;
+    padding:3.6rem 1rem 2.45rem;
+  }
+  h2{font-size:clamp(1.55rem,8vw,2.05rem);line-height:1.22;}
+  h3{line-height:1.28;}
+  .eyebrow{
+    font-size:.68rem;
+    letter-spacing:.09em;
+    line-height:1.45;
+    flex-wrap:wrap;
+  }
+  .eyebrow::before{width:14px;}
+  #home{
+    min-height:auto;
+    padding-top:5.3rem;
+    padding-bottom:3.25rem;
+    align-content:start;
+    column-gap:0;
+  }
+  #home > .avatar-wrap{
+    justify-self:center;
+    margin:0 auto 1.15rem;
+  }
+  #home > .eyebrow,
+  #home > h1,
+  #home > .tagline,
+  #home > .scrolldown,
+  #home > .split-underline{
+    justify-self:stretch;
+  }
+  #home > h1{
+    font-size:clamp(2rem,12vw,3rem);
+    overflow-wrap:anywhere;
+  }
+  #home > .tagline{font-size:.98rem;line-height:1.72;}
+  #home > .scrolldown{margin-top:1.25rem;}
+  .avatar-wrap,
+  .avatar-label{
+    width:132px;
+    height:132px;
+  }
+  .avatar-label{font-size:.72rem;}
+  .split-underline{width:96px;margin:.8rem 0 .25rem;}
+  .card{
+    padding:1.1rem;
+    border-radius:12px;
+    margin-bottom:.85rem;
+  }
+  .tag{margin-bottom:.3rem;}
+  .timeline{gap:1.05rem;margin-top:1.35rem;}
+  .tl-row{grid-template-columns:1fr;gap:.45rem;}
+  .tl-year{padding-top:0;font-size:.75rem;}
+  .tl-block{padding-left:.95rem;}
+  .tl-bullets{padding-left:1rem;}
+  .era-title{align-items:flex-start;margin-top:2rem;}
+  .course-search{max-width:100%;}
+  .semester summary{
+    gap:.75rem;
+    align-items:flex-start;
+    font-size:.78rem;
+    line-height:1.45;
+  }
+  .semester summary .small-btn{flex-shrink:0;}
+  .semester-body{padding:.45rem .75rem .9rem;}
+  table.course-table,
+  table.course-table tbody,
+  table.course-table tr,
+  table.course-table td{
+    display:block;
+    width:100%;
+  }
+  table.course-table{border-collapse:separate;margin-top:.25rem;}
+  table.course-table thead{display:none;}
+  table.course-table tr{
+    padding:.75rem 0;
+    border-bottom:1px solid var(--border);
+  }
+  table.course-table tr:last-child{border-bottom:none;}
+  table.course-table td{
+    border-bottom:none;
+    padding:.28rem 0;
+  }
+  table.course-table td::before{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.65rem;
+    color:var(--muted);
+    letter-spacing:.04em;
+    margin-bottom:.12rem;
+  }
+  table.course-table td:nth-child(1)::before{content:"課程";}
+  table.course-table td:nth-child(2)::before{content:"學到的知識";}
+  table.course-table td:nth-child(3)::before{content:"成績";}
+  table.course-table td:nth-child(4)::before{content:"作品連結";}
+  table.course-table td:nth-child(5)::before{content:"操作";}
+  table.course-table input{padding:.48rem .55rem;background:var(--surface);border-color:var(--border);}
+  table.course-table .row-actions{justify-content:flex-end;margin-top:.2rem;}
+  body.locked table.course-table td:nth-child(5){display:none;}
+  body.locked table.course-table .static-field,
+  body.locked table.course-table input:disabled{
+    display:block;
+    padding:.2rem 0;
+  }
+  .pdf-programs{gap:.8rem;}
+  .pdf-card iframe{height:260px;}
+  .portfolio-layout{gap:1rem;}
+  .tag-filter{
+    position:static;
+    display:flex;
+    flex-direction:row;
+    gap:.45rem;
+    overflow-x:auto;
+    padding-bottom:.35rem;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+  }
+  .tag-filter label{
+    flex:0 0 auto;
+    background:var(--surface2);
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:.35rem .65rem;
+    color:var(--text);
+  }
+  .portfolio-grid{gap:.8rem;}
+  .p-card{padding:1rem;}
+  .p-thumb{margin-bottom:.65rem;}
+  .add-form .row{flex-direction:column;}
+  .add-form .row > *{min-width:0;}
+  .modal-backdrop{
+    padding:0 1rem 0;
+    align-items:flex-end;
+  }
+  .modal{
+    width:100%;
+    max-height:88vh;
+    border-radius:16px 16px 0 0;
+    padding:1.35rem;
+  }
+  .modal-close{top:.85rem;right:.85rem;}
+  .modal-images{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));}
+  footer{padding:2rem 1rem 8rem;}
+  .edit-lock-inner{
+    width:94%;
+    display:grid;
+    grid-template-columns:1fr auto auto;
+    align-items:center;
+    justify-content:stretch;
+    gap:.45rem;
+  }
+  .edit-lock-status{
+    grid-column:1/-1;
+    text-align:center;
+  }
+  #edit-password{
+    width:100%;
+    max-width:none;
+  }
+  .edit-lock-btn{
+    padding:.55rem .65rem;
+    text-align:center;
+  }
+  .edit-lock-message{
+    grid-column:1/-1;
+    font-size:.72rem;
+  }
+}
+
+@media(max-width:420px){
+  body{padding-bottom:calc(176px + env(safe-area-inset-bottom, 0px));}
+  section{padding-left:.9rem;padding-right:.9rem;}
+  .card{padding:1rem;}
+  .semester summary{padding:.75rem .8rem;}
+  .edit-lock-inner{grid-template-columns:1fr 1fr;}
+  #edit-password{grid-column:1/-1;}
+  .edit-lock-btn{width:100%;}
+}
+
+@media(min-width:801px){
+  .sidebar-scrim{display:none !important;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{transition:none !important;animation:none !important;}
+}
+
 </style>
 </head>
 <body class="locked">
 
-<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
+<button class="menu-toggle" type="button" aria-label="開啟選單" aria-expanded="false" onclick="toggleMobileMenu()">☰</button>
+<div class="sidebar-scrim" onclick="closeMobileMenu()" aria-hidden="true"></div>
 
 <div class="app">
   <aside class="sidebar">
@@ -651,6 +897,31 @@ function setLang(lang){
   });
 }
 
+
+/* ---------------- mobile menu ---------------- */
+function toggleMobileMenu(force){
+  const sidebar = document.querySelector('.sidebar');
+  const btn = document.querySelector('.menu-toggle');
+  const shouldOpen = typeof force === 'boolean' ? force : !sidebar.classList.contains('open');
+  sidebar.classList.toggle('open', shouldOpen);
+  document.body.classList.toggle('menu-open', shouldOpen);
+  if(btn){
+    btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', shouldOpen ? '關閉選單' : '開啟選單');
+    btn.textContent = shouldOpen ? '×' : '☰';
+  }
+}
+function closeMobileMenu(){ toggleMobileMenu(false); }
+document.querySelectorAll('#navlist a').forEach(link=>{
+  link.addEventListener('click', ()=> closeMobileMenu());
+});
+window.addEventListener('keydown', evt=>{
+  if(evt.key === 'Escape') closeMobileMenu();
+});
+window.addEventListener('resize', ()=>{
+  if(window.innerWidth > 800) closeMobileMenu();
+});
+
 /* ---------------- scroll spy ---------------- */
 const sections = document.querySelectorAll('main section');
 const navlinks = document.querySelectorAll('#navlist a');
@@ -928,6 +1199,14 @@ function exportHTML(){
   const clone = document.documentElement.cloneNode(true);
   clone.querySelectorAll('.add-form').forEach(f=>f.classList.remove('open'));
   clone.querySelector('.modal-backdrop').classList.remove('open');
+  clone.querySelector('.sidebar')?.classList.remove('open');
+  clone.querySelector('body')?.classList.remove('menu-open');
+  const menuBtn = clone.querySelector('.menu-toggle');
+  if(menuBtn){
+    menuBtn.textContent = '☰';
+    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-label','開啟選單');
+  }
   const html = '<!DOCTYPE html>\n' + clone.outerHTML;
   downloadHtml(html, 'resume_edit.html');
 }
@@ -937,6 +1216,8 @@ function exportPublish(){
   const clone = document.documentElement.cloneNode(true);
   clone.querySelectorAll('.modal-backdrop').forEach(m=>m.classList.remove('open'));
   clone.querySelectorAll('.add-form').forEach(f=>f.classList.remove('open'));
+  clone.querySelector('.sidebar')?.classList.remove('open');
+  clone.querySelector('body')?.classList.remove('menu-open');
   // remove editing-only controls entirely
   clone.querySelectorAll('.edit-only').forEach(el=>el.remove());
   // strip contenteditable so text can't be changed
@@ -949,6 +1230,7 @@ function exportPublish(){
     el.replaceWith(span);
   });
   clone.querySelector('.menu-toggle')?.remove();
+  clone.querySelector('.sidebar-scrim')?.remove();
   clone.querySelectorAll('.edit-lock-panel').forEach(el=>el.remove());
   clone.body?.classList.remove('locked');
   const html = '<!DOCTYPE html>\n' + clone.outerHTML;
